@@ -363,13 +363,19 @@ class VideoEditorWindow(QMainWindow):
 
         left_column.addStretch()
 
-        # center: preview widget (top middle) - big as requested
+        # center: preview widget (top middle)
         center_column = QVBoxLayout()
         top_row.addLayout(center_column, 3)
+
         self.preview_label = QLabel("Preview (load a video)")
         self.preview_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.preview_label.setMinimumSize(560, 320)
-        self.preview_label.setStyleSheet("background-color: #111; color: #aaa; border: 1px solid #333;")
+
+        # FIX: Set a fixed size for the preview box
+        self.preview_label.setFixedSize(560, 320)  # width x height
+        self.preview_label.setStyleSheet(
+            "background-color: #111; color: #aaa; border: 1px solid #333;"
+        )
+
         center_column.addWidget(self.preview_label)
 
         # right: markers and zoom controls
